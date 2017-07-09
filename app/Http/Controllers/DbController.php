@@ -42,4 +42,38 @@ class DbController extends Controller
 
         return view('db.all');
     }
+
+    public function select()
+    {
+        $test = DB::table('test')
+            ->where('name', 'like', '%ne%')
+            ->max('age');
+
+        /*foreach($test as $t){
+            echo $t->name . ' ' . $t->email .'<br>';
+        }*/
+
+        // dd($test);
+
+        return view('db.all');
+    }
+
+    public function update()
+    {
+        DB::table('test')
+            ->where('id', '=', 1)
+            ->update(['name' => 'John'])
+        ;
+        return view('db.all');
+    }
+
+    public function delete()
+    {
+        DB::table('test')
+            ->whereIn('id', [1, 3])
+            ->delete()
+        ;
+
+        return view('db.all');
+    }
 }
