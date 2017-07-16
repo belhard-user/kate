@@ -1,0 +1,25 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+
+class Test extends Model
+{
+    protected $table = 'test';
+
+    protected $fillable = [
+        'name', 'email', 'age', 'avatar', 'description'
+    ];
+
+    public function getFooAttribute()
+    {
+        return $this->name . ' ' . $this->email;
+    }
+
+    public function getUpperName()
+    {
+        return strtoupper($this->name);
+    }
+}
