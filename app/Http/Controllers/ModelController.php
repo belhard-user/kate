@@ -113,4 +113,35 @@ class ModelController extends Controller
 
         return redirect()->back();
     }
+
+    public function relation()
+    {
+        $users = Test::all();
+
+        return view('model.relation', [
+            'users' => $users
+        ]);
+       /* $john = Test::find(2);
+        $phones = [
+            '+375 29 7776666',
+            '+375 29 7776667',
+            '+375 29 7776668',
+            '+375 29 7776669',
+        ];
+
+        foreach ($phones as $phone) {
+            $john->phones()->create(['phone_number' => $phone]);
+        }
+
+        dd($john);*/
+    }
+
+    public function belongs()
+    {
+        $phones = \App\Phone::get();
+
+        return view('model.belongs', [
+            'phones' => $phones
+        ]);
+    }
 }

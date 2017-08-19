@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Phone;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -21,5 +22,10 @@ class Test extends Model
     public function getUpperName()
     {
         return strtoupper($this->name);
+    }
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
     }
 }
